@@ -3,7 +3,7 @@ Created on 11/10/2019
 
 @author: Miguel
 '''
-from Development.Person import Person
+from Person import Person
 from graphics import *
 
 
@@ -34,7 +34,7 @@ class State:
     def show_list(self, list_name, name_list, x0, y):
         t = Text(Point(x0 + 60,y), list_name)
         t.draw(self.win)
-        y += 50
+        y += 35
         x = x0
         line_count = 0
         for name in name_list:
@@ -43,7 +43,7 @@ class State:
             x += 40
             line_count += 1
             if line_count == 5:
-                y += 40
+                y += 20
                 line_count = 0
                 x = x0
     
