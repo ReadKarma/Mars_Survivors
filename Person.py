@@ -3,7 +3,6 @@ Created on 11/10/2019
 
 @author: Miguel
 '''
-
 import random
 
 class Person:
@@ -23,7 +22,7 @@ class Person:
             self.work_obj = 'collects'
         self.work = self.work_obj
         self.name = name
-        
+
 
     def update_happiness(self, cleans):
         if self.work == self.work_obj:
@@ -48,15 +47,15 @@ class Person:
 
     def get_materials(self):
         return self.work == 'collects'
-    
+
     def get_work(self):
         return self.work
-    
+
     def get_name(self):
         return self.name
 
     def update_place(self, location):
         self.place = location
-    
+
     def get_place(self):
-        return self.place
+        return self.place 

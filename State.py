@@ -6,7 +6,6 @@ Created on 11/10/2019
 from Person import Person
 from graphics import *
 
-
 class State:
 
     def __init__(self, cleans, materials, happiness, food, money, prob_farm, prob_cleans, prob_maint, number_people, win):
@@ -24,13 +23,13 @@ class State:
         for i in range(number_people):
             a = Person(happiness, prob_farm, prob_cleans, prob_maint, str(i+1))
             self.people.append(a) 
-    
+
     def new_work(self, new_work, name):
         i=0
         while i < self.number_people:
             if self.people[i].get_name() == name:
                 self.people[i].update_work(new_work)
-    
+
     def show_list(self, list_name, people2_list, x0, y):
         t = Text(Point(x0 + 60,y), list_name)
         t.draw(self.win)
@@ -47,8 +46,8 @@ class State:
                 y += 20
                 line_count = 0
                 x = x0
-            
-    
+
+
     def show_values(self):
         x = 60
         for i in range(5):
@@ -68,7 +67,7 @@ class State:
             else:
                 t = Text(Point(x,50), self.money)
                 t.draw(self.win)
-    
+
     def turn(self):
         r = len(self.people)
         i=0
@@ -96,7 +95,7 @@ class State:
         self.food+=nr_farmers
         if self.happiness<0:
             self.food = self.food/2
-        nr_people = self.food/10
+        nr_people = int(self.food/10)
         if nr_people<r:
             death = r-nr_people
             for i in range(death):
@@ -139,4 +138,4 @@ class State:
             r = Rectangle(Point(70 + 250*i, 120),Point(290 + 250*i, 700))
             r.draw(self.win)
         t = Text(Point(1150,145), 'Surrender')
-        t.draw(self.win)
+        t.draw(self.win) 
