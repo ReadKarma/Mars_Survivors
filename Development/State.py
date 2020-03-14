@@ -31,21 +31,23 @@ class State:
             if self.people[i].get_name() == name:
                 self.people[i].update_work(new_work)
     
-    def show_list(self, list_name, name_list, x0, y):
+    def show_list(self, list_name, people2_list, x0, y):
         t = Text(Point(x0 + 60,y), list_name)
         t.draw(self.win)
         y += 35
         x = x0
         line_count = 0
-        for name in name_list:
-            t = Text(Point(x,y), name)
+        for dude in people2_list:
+            t = Text(Point(x,y), dude.get_name())
             t.draw(self.win)
+            dude.update_place(Point(x,y))
             x += 40
             line_count += 1
             if line_count == 5:
                 y += 20
                 line_count = 0
                 x = x0
+            
     
     def show_values(self):
         x = 60
@@ -114,14 +116,16 @@ class State:
         for item in self.win.items[:]:
             item.undraw()
         self.win.update()
-        
-    
+
+    def get_number_people (self):
+        return self.number_people
+
     def show_world(self):
         self.clear()
-        self.show_list('Farmers:', [person.get_name() for person in self.people if person.get_work() == 'farm'], 100, 150)
-        self.show_list('Cleaners:', [person.get_name() for person in self.people if person.get_work() == 'cleans'], 350, 150)
-        self.show_list('Collectors:', [person.get_name() for person in self.people if person.get_work() == 'collects'], 600, 150)
-        self.show_list('Workers:', [person.get_name() for person in self.people if person.get_work() == 'maint'], 850, 150)
+        self.show_list('Farmers:', [person for person in self.people if person.get_work() == 'farm'], 100, 150)
+        self.show_list('Cleaners:', [person for person in self.people if person.get_work() == 'cleans'], 350, 150)
+        self.show_list('Collectors:', [person for person in self.people if person.get_work() == 'collects'], 600, 150)
+        self.show_list('Workers:', [person for person in self.people if person.get_work() == 'maint'], 850, 150)
         self.show_values()
         r = Rectangle(Point(1100, 650),Point(1300, 700))
         r.draw(self.win)
@@ -129,4 +133,10 @@ class State:
         t.draw(self.win)
         t = Text(Point(1150,50), 'Turn: ')
         t.draw(self.win)
-    
+        r = Rectangle(Point(1100, 120),Point(1300, 170))
+        r.draw(self.win)
+        for i in range(4):
+            r = Rectangle(Point(70 + 250*i, 120),Point(290 + 250*i, 700))
+            r.draw(self.win)
+        t = Text(Point(1150,145), 'Surrender')
+        t.draw(self.win)

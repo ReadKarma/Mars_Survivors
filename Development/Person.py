@@ -57,3 +57,6 @@ class Person:
 
     def update_place(self, location):
         self.place = location
+    
+    def get_place(self):
+        return self.place
