@@ -4,7 +4,7 @@ Created on 11/10/2019
 @author: Miguel
 '''
 from Person import Person
-from graphics import *
+import pygame
 
 
 class State:
@@ -102,7 +102,7 @@ class State:
             for i in range(death):
                 self.people.pop(0)
         elif nr_people>r:
-            life = nr_people - r
+            life = int(nr_people - r)
             j=int(self.people[r-1].get_name())
             for i in range(life):
                 a = Person(self.happiness, self.prob_farm, self.prob_cleans, self.prob_maint, str(i+j+1))
