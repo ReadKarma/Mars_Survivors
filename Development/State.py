@@ -4,12 +4,11 @@ Created on 11/10/2019
 @author: Miguel
 '''
 from Person import Person
-import pygame
 
 
 class State:
 
-    def __init__(self, cleans, materials, happiness, food, money, prob_farm, prob_cleans, prob_maint, number_people, win):
+    def __init__(self, cleans, materials, happiness, food, money, prob_farm, prob_cleans, prob_maint, number_people):
         self.prob_farm = prob_farm
         self.prob_cleans = prob_cleans
         self.prob_maint = prob_maint
@@ -19,7 +18,6 @@ class State:
         self.materials = materials
         self.money = money
         self.number_people = number_people
-        self.win = win
         self.people =list()
         for i in range(number_people):
             a = Person(happiness, prob_farm, prob_cleans, prob_maint, str(i+1))
